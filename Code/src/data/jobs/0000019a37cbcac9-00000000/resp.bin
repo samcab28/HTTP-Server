@@ -1,0 +1,6 @@
+HTTP/1.0 404 Not Found
+Content-Length: 50
+Content-Type: application/json
+Connection: close
+
+{"error":"No such file or directory (os error 2)"}

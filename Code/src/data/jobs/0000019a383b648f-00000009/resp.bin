@@ -1,0 +1,6 @@
+HTTP/1.0 200 OK
+Content-Length: 150
+Connection: close
+Content-Type: application/json
+
+{"filename_in":"data//test.txt","filename_out":"data//test.txt.sorted","algo":"merge","lines":0,"runs":1,"bytes_in":5000,"bytes_out":0,"elapsed_ms":0}

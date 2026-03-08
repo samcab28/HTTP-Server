@@ -1,0 +1,1467 @@
+{
+	"info": {
+		"_postman_id": "cf5cb1f9-fc15-4a15-a266-485703ee2138",
+		"name": "SO Proyecto HTTP/1.0 Server",
+		"description": "Colección completa de endpoints para el servidor HTTP/1.0 implementado en Rust.\n\n**Sprint 1 - Fundamentos**\n- Endpoints básicos funcionando\n- Manejo de errores\n- Validación de parámetros\n- Sistema de logging con Request IDs\n\n**Base URL:** http://localhost:8080\n\n**Autor:** Proyecto Sistema Operativo 2024",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31493491",
+		"_collection_link": "https://deportec-2590.postman.co/workspace/My-Workspace~ac96581f-d652-476f-8541-7f0325d021ae/collection/31493491-cf5cb1f9-fc15-4a15-a266-485703ee2138?action=share&source=collection_link&creator=31493491"
+	},
+	"item": [
+		{
+			"name": "Información del Servidor",
+			"item": [
+				{
+					"name": "Help - Lista de Endpoints",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/help",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"help"
+							]
+						},
+						"description": "Retorna la lista completa de endpoints disponibles en el servidor.\n\n**Response:**\n```json\n{\n  \"server\": \"HTTP/1.0 Server\",\n  \"endpoints\": [\"...\"]\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Status - Estado del Servidor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"status"
+							]
+						},
+						"description": "Retorna información sobre el estado actual del servidor.\n\n**Response:**\n```json\n{\n  \"pid\": 12345,\n  \"uptime_seconds\": 3600,\n  \"status\": \"running\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Metrics - Metricas del Servidor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/metrics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"metrics"
+							]
+						},
+						"description": "Retorna información sobre el estado actual del servidor.\n\n**Response:**\n```json\n{\n  \"pid\": 12345,\n  \"uptime_seconds\": 3600,\n  \"status\": \"running\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Sleep",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/sleep?seconds=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sleep"
+							],
+							"query": [
+								{
+									"key": "seconds",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Retorna información sobre el estado actual del servidor.\n\n**Response:**\n```json\n{\n  \"pid\": 12345,\n  \"uptime_seconds\": 3600,\n  \"status\": \"running\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Simulate - Simular CPU por n segundos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/simulate?seconds=3&task=fibonacci&prio=high",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"simulate"
+							],
+							"query": [
+								{
+									"key": "seconds",
+									"value": "3"
+								},
+								{
+									"key": "task",
+									"value": "fibonacci"
+								},
+								{
+									"key": "prio",
+									"value": "high"
+								}
+							]
+						},
+						"description": "Retorna información sobre el estado actual del servidor.\n\n**Response:**\n```json\n{\n  \"pid\": 12345,\n  \"uptime_seconds\": 3600,\n  \"status\": \"running\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Load test - Carga simulada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/loadtest?tasks=8&sleep=1&prio=low",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"loadtest"
+							],
+							"query": [
+								{
+									"key": "tasks",
+									"value": "8"
+								},
+								{
+									"key": "sleep",
+									"value": "1"
+								},
+								{
+									"key": "prio",
+									"value": "low"
+								}
+							]
+						},
+						"description": "Retorna información sobre el estado actual del servidor.\n\n**Response:**\n```json\n{\n  \"pid\": 12345,\n  \"uptime_seconds\": 3600,\n  \"status\": \"running\"\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Endpoints de información general sobre el servidor"
+		},
+		{
+			"name": "Utilidades de Texto",
+			"item": [
+				{
+					"name": "Reverse - Invertir Texto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reverse?text=HelloWorld",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reverse"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "HelloWorld",
+									"description": "Texto a invertir"
+								}
+							]
+						},
+						"description": "Invierte el texto proporcionado.\n\n**Parámetros:**\n- `text` (requerido): Texto a invertir\n\n**Response:**\n```json\n{\n  \"original\": \"HelloWorld\",\n  \"reversed\": \"dlroWolleH\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "To Upper - Convertir a Mayúsculas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/toupper?text=hello world",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toupper"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "hello world",
+									"description": "Texto a convertir"
+								}
+							]
+						},
+						"description": "Convierte el texto a mayúsculas.\n\n**Parámetros:**\n- `text` (requerido): Texto a convertir\n\n**Response:**\n```json\n{\n  \"original\": \"hello world\",\n  \"upper\": \"HELLO WORLD\"\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones de manipulación de texto"
+		},
+		{
+			"name": "Criptografía y Seguridad",
+			"item": [
+				{
+					"name": "Hash - SHA256",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hash?text=hello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hash"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "hello",
+									"description": "Texto a hashear"
+								}
+							]
+						},
+						"description": "Calcula el hash SHA256 del texto proporcionado.\n\n**Parámetros:**\n- `text` (requerido): Texto a hashear\n\n**Response:**\n```json\n{\n  \"text\": \"hello\",\n  \"sha256\": \"2cf24dba5fb0a30e...\"\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones criptográficas"
+		},
+		{
+			"name": "Matemáticas y Números",
+			"item": [
+				{
+					"name": "Timestamp - Unix Timestamp",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/timestamp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"timestamp"
+							]
+						},
+						"description": "Retorna el timestamp Unix actual en segundos.\n\n**Response:**\n```json\n{\n  \"timestamp\": 1698765432,\n  \"unit\": \"seconds\"\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Random - Números Aleatorios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/random?count=10&min=1&max=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "10",
+									"description": "Cantidad de números (máx 10000)"
+								},
+								{
+									"key": "min",
+									"value": "1",
+									"description": "Valor mínimo (default: 0)"
+								},
+								{
+									"key": "max",
+									"value": "100",
+									"description": "Valor máximo (default: 100)"
+								}
+							]
+						},
+						"description": "Genera números aleatorios en un rango especificado.\n\n**Parámetros:**\n- `count` (requerido): Cantidad de números (máx 10000)\n- `min` (opcional): Valor mínimo (default: 0)\n- `max` (opcional): Valor máximo (default: 100)\n\n**Response:**\n```json\n{\n  \"count\": 10,\n  \"min\": 1,\n  \"max\": 100,\n  \"numbers\": [42, 17, 89, ...]\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Fibonacci - Secuencia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fibonacci?num=20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fibonacci"
+							],
+							"query": [
+								{
+									"key": "num",
+									"value": "20",
+									"description": "Posición en la secuencia (0-90)"
+								}
+							]
+						},
+						"description": "Calcula el número de Fibonacci en la posición especificada.\n\n**Parámetros:**\n- `num` (requerido): Posición en secuencia Fibonacci (0-90)\n\n**Response:**\n```json\n{\n  \"n\": 20,\n  \"result\": 6765,\n  \"elapsed_ms\": 0\n}\n```\n\n**Nota:** El máximo es 90 para prevenir overflow."
+					},
+					"response": []
+				},
+				{
+					"name": "Fibonacci - Grande (N=50)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fibonacci?num=90&prio=normal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fibonacci"
+							],
+							"query": [
+								{
+									"key": "num",
+									"value": "90",
+									"description": "Número grande para ver el tiempo"
+								},
+								{
+									"key": "prio",
+									"value": "normal"
+								}
+							]
+						},
+						"description": "Prueba con un número más grande para ver el tiempo de ejecución."
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones matemáticas y numéricas"
+		},
+		{
+			"name": "Operaciones de Archivos",
+			"item": [
+				{
+					"name": "Create File - Crear Archivo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/createfile?name=test.txt&content=HelloWorld &repeat=1312",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createfile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test.txt",
+									"description": "Nombre del archivo"
+								},
+								{
+									"key": "content",
+									"value": "HelloWorld ",
+									"description": "Contenido del archivo"
+								},
+								{
+									"key": "repeat",
+									"value": "1312",
+									"description": "Veces a repetir el contenido (default: 1)"
+								}
+							]
+						},
+						"description": "Crea un archivo en el directorio `./data/`.\n\n**Parámetros:**\n- `name` (requerido): Nombre del archivo (sin path traversal)\n- `content` (requerido): Contenido a escribir\n- `repeat` (opcional): Veces a repetir el contenido (default: 1, máx: 100000)\n\n**Response:**\n```json\n{\n  \"filename\": \"test.txt\",\n  \"size_bytes\": 33,\n  \"status\": \"created\"\n}\n```\n\n**Ubicación:** `./data/test.txt`"
+					},
+					"response": []
+				},
+				{
+					"name": "Create File - Grande",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/createfile?name=large.txt&content=Lorem ipsum dolor sit amet&repeat=1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createfile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "large.txt",
+									"description": "Archivo grande"
+								},
+								{
+									"key": "content",
+									"value": "Lorem ipsum dolor sit amet",
+									"description": "Texto largo"
+								},
+								{
+									"key": "repeat",
+									"value": "1000",
+									"description": "Muchas repeticiones"
+								}
+							]
+						},
+						"description": "Crea un archivo más grande para pruebas de rendimiento."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File - Eliminar Archivo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/deletefile?name=test.txt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deletefile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test.txt",
+									"description": "Nombre del archivo a eliminar"
+								}
+							]
+						},
+						"description": "Elimina un archivo del directorio `./data/`.\n\n**Parámetros:**\n- `name` (requerido): Nombre del archivo a eliminar\n\n**Response:**\n```json\n{\n  \"filename\": \"test.txt\",\n  \"status\": \"deleted\"\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Operaciones con archivos del sistema"
+		},
+		{
+			"name": "CPU-Bound",
+			"item": [
+				{
+					"name": "isPrime - Division",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/isprime?n=982451653&algo=division",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"isprime"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "982451653",
+									"description": "Número a revisar"
+								},
+								{
+									"key": "algo",
+									"value": "division",
+									"description": "Algoritmo (Division o Miller-Rabin (mr))\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "isPrime - MillerRobin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/isprime?n=982451653&algo=mr&rounds=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"isprime"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "982451653"
+								},
+								{
+									"key": "algo",
+									"value": "mr"
+								},
+								{
+									"key": "rounds",
+									"value": "1",
+									"description": "Defaults to 5\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Factor - Factoriza",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/factor?n=218714821",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"factor"
+							],
+							"query": [
+								{
+									"key": "n",
+									"value": "218714821"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mandelbrot - Array 2D",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/mandelbrot?width=1024&height=768&max_iter=1000&dump=mandel.pgm",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"mandelbrot"
+							],
+							"query": [
+								{
+									"key": "width",
+									"value": "1024"
+								},
+								{
+									"key": "height",
+									"value": "768"
+								},
+								{
+									"key": "max_iter",
+									"value": "1000"
+								},
+								{
+									"key": "dump",
+									"value": "mandel.pgm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MatrixMul - Multiplica matrices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/matrixmul?size=128&seed=42",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"matrixmul"
+							],
+							"query": [
+								{
+									"key": "size",
+									"value": "128"
+								},
+								{
+									"key": "seed",
+									"value": "42"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PiDigits - Spigot",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pi?digits=15&algo=spigot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pi"
+							],
+							"query": [
+								{
+									"key": "digits",
+									"value": "15"
+								},
+								{
+									"key": "algo",
+									"value": "spigot"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PiDigits - Chudnovsky",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pi?digits=15&algo=chudnovsky",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pi"
+							],
+							"query": [
+								{
+									"key": "digits",
+									"value": "15"
+								},
+								{
+									"key": "algo",
+									"value": "chudnovsky"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IO Bound",
+			"item": [
+				{
+					"name": "WordCount - Contar palabras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/wordcount?name=grep.txt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"wordcount"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grep - Buscar patrones CS y sin overlap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/grep?name=grep.txt&pattern=He",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"grep"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								},
+								{
+									"key": "pattern",
+									"value": "He"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grep - Buscar patrones CS y con overlap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/grep?name=grep.txt&pattern=He&icase=1&overlap=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"grep"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								},
+								{
+									"key": "pattern",
+									"value": "He"
+								},
+								{
+									"key": "icase",
+									"value": "1"
+								},
+								{
+									"key": "overlap",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grep - Buscar patrones CI y con overlap",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/grep?name=grep.txt&pattern=He&icase=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"grep"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								},
+								{
+									"key": "pattern",
+									"value": "He"
+								},
+								{
+									"key": "icase",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hashfile - Aplicar SHA256",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/hashfile?name=test.txt&algo=sha256",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"hashfile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "test.txt"
+								},
+								{
+									"key": "algo",
+									"value": "sha256"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compress - Gzip NoLib",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/compress?name=grep.txt&codec=gzip&impl=pure",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"compress"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								},
+								{
+									"key": "codec",
+									"value": "gzip"
+								},
+								{
+									"key": "impl",
+									"value": "pure"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compress - Gzip Lib",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/compress?name=grep.txt&codec=gzip&impl=lib",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"compress"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								},
+								{
+									"key": "codec",
+									"value": "gzip"
+								},
+								{
+									"key": "impl",
+									"value": "lib"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compress - xz",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/compress?name=grep.txt&codec=xz&impl=lib",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"compress"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "grep.txt"
+								},
+								{
+									"key": "codec",
+									"value": "xz"
+								},
+								{
+									"key": "impl",
+									"value": "lib"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sortfile - Merge sort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/sortfile?name=data-sort-100mb.txt&algo=merge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sortfile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "data-sort-100mb.txt"
+								},
+								{
+									"key": "algo",
+									"value": "merge"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sortfile - Quick sort",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/sortfile?name=data-sort-50mb.txt&algo=quick",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sortfile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "data-sort-50mb.txt"
+								},
+								{
+									"key": "algo",
+									"value": "quick"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "Jobs - Submit 100MB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/jobs/submit?route=/sortfile&name=data-test.txt&algo=quick&prio=high",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobs",
+								"submit"
+							],
+							"query": [
+								{
+									"key": "route",
+									"value": "/sortfile"
+								},
+								{
+									"key": "name",
+									"value": "data-test.txt"
+								},
+								{
+									"key": "algo",
+									"value": "quick"
+								},
+								{
+									"key": "prio",
+									"value": "high"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jobs - Cancel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/jobs/cancel?id=0000019a377d45c0-00000001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobs",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0000019a377d45c0-00000001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jobs - Check status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/jobs/status?id=0000019a378360fe-00000000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobs",
+								"status"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0000019a378360fe-00000000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jobs - Check result",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/jobs/result?id=0000019a378360fe-00000000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobs",
+								"result"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "0000019a378360fe-00000000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Jobs - Ver todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/jobs/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"jobs",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tests de Errores",
+			"item": [
+				{
+					"name": "Error 404 - Ruta No Encontrada",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/notfound",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"notfound"
+							]
+						},
+						"description": "Prueba el manejo de error 404.\n\n**Response (404):**\n```json\n{\n  \"error\": \"Route not found: /notfound\",\n  \"status\": 404\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Error 400 - Parámetro Faltante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reverse",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reverse"
+							]
+						},
+						"description": "Prueba el manejo de parámetros faltantes.\n\n**Response (400):**\n```json\n{\n  \"error\": \"Missing required parameter: text\",\n  \"status\": 400\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Error 400 - Parámetro Inválido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fibonacci?num=abc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fibonacci"
+							],
+							"query": [
+								{
+									"key": "num",
+									"value": "abc",
+									"description": "Valor inválido (no es número)"
+								}
+							]
+						},
+						"description": "Prueba el manejo de parámetros inválidos.\n\n**Response (400):**\n```json\n{\n  \"error\": \"Invalid parameter 'num': invalid value: ...\",\n  \"status\": 400\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Error 400 - Fibonacci Fuera de Rango",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fibonacci?num=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fibonacci"
+							],
+							"query": [
+								{
+									"key": "num",
+									"value": "100",
+									"description": "Valor fuera del rango permitido (máx 90)"
+								}
+							]
+						},
+						"description": "Prueba validación de rangos.\n\n**Response (400):**\n```json\n{\n  \"error\": \"Invalid parameter 'num': maximum is 90 (overflow protection)\",\n  \"status\": 400\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Error 400 - Path Traversal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/createfile?name=../etc/passwd&content=hacked",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"createfile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "../etc/passwd",
+									"description": "Intento de path traversal"
+								},
+								{
+									"key": "content",
+									"value": "hacked"
+								}
+							]
+						},
+						"description": "Prueba protección contra path traversal.\n\n**Response (400):**\n```json\n{\n  \"error\": \"Invalid parameter 'name': invalid filename\",\n  \"status\": 400\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Error 404 - Archivo No Existe",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/deletefile?name=noexiste.txt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"deletefile"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "noexiste.txt",
+									"description": "Archivo que no existe"
+								}
+							]
+						},
+						"description": "Prueba eliminación de archivo inexistente.\n\n**Response (404):**\n```json\n{\n  \"error\": \"File not found: noexiste.txt\",\n  \"status\": 404\n}\n```"
+					},
+					"response": []
+				},
+				{
+					"name": "Error 400 - Random Count Excedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/random?count=20000&min=1&max=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "20000",
+									"description": "Excede el máximo de 10000"
+								},
+								{
+									"key": "min",
+									"value": "1"
+								},
+								{
+									"key": "max",
+									"value": "100"
+								}
+							]
+						},
+						"description": "Prueba límites de count en random.\n\n**Response (400):**\n```json\n{\n  \"error\": \"Invalid parameter 'count': maximum is 10000\",\n  \"status\": 400\n}\n```"
+					},
+					"response": []
+				}
+			],
+			"description": "Tests de manejo de errores y validación"
+		},
+		{
+			"name": "Tests de Performance",
+			"item": [
+				{
+					"name": "Fibonacci - Secuencial (10 requests)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/fibonacci?num=30",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"fibonacci"
+							],
+							"query": [
+								{
+									"key": "num",
+									"value": "30"
+								}
+							]
+						},
+						"description": "Ejecutar múltiples veces para medir consistencia.\n\n**Instrucciones:**\n1. Usar Postman Runner\n2. Configurar 10 iteraciones\n3. Revisar tiempos en resultados"
+					},
+					"response": []
+				},
+				{
+					"name": "Random - Grande",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/random?count=5000&min=1&max=1000000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"random"
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "5000",
+									"description": "Cantidad grande"
+								},
+								{
+									"key": "min",
+									"value": "1"
+								},
+								{
+									"key": "max",
+									"value": "1000000"
+								}
+							]
+						},
+						"description": "Genera muchos números aleatorios para probar rendimiento."
+					},
+					"response": []
+				}
+			],
+			"description": "Tests de rendimiento y carga"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Test automático para verificar response",
+					"pm.test(\"Status code is 200 or error code\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 400, 404, 500]);",
+					"});",
+					"",
+					"pm.test(\"Response is JSON\", function () {",
+					"    pm.response.to.have.header(\"Content-Type\");",
+					"    pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+					"});",
+					"",
+					"pm.test(\"Has Request-Id header\", function () {",
+					"    pm.response.to.have.header(\"X-Request-Id\");",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
